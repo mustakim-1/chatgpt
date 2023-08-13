@@ -1,117 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head >
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registration Form</title>
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <style>
-
-
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: darkcyan;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+     
+     
+
     }
 
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 2rem;
-      background-color:#0F1729;
+    .profile-container {
+      display: flex;
+      width: 100%;
+      /* max-width: 800px; */
+      background-color: #1e2d4d;
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      color: #22d3ee;
+
     }
 
-    form {
-      display: grid;
-      grid-gap: 20px;
+    .profile-image {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #1e2d4d;
+      color: #22d3ee;
+
     }
 
-    label {
+    .profile-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      color: #22d3ee;
+
+    }
+
+    .social-links {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .social-link {
+      margin-right: 10px;
+      font-size: 20px;
+      color: #ffffff;
+      text-decoration: none;
+      color: #22d3ee;
+
+    }
+
+    .profile-details {
+      flex: 2;
+      padding: 20px;
+      color: #22d3ee;
+    }
+
+    .profile-details h1 {
+      margin-top: 0;
+      font-size: 24px;
+      
+      color: #22d3ee;
+
+    }
+
+    .profile-details label {
       font-weight: bold;
-      color: #6CCEEF;
+      color: #1e2d4d;
+      display: block;
+      margin-top: 10px;
+      color: #22d3ee;
+
     }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"] {
+    .profile-details input[type="text"],
+    .profile-details input[type="email"],
+    .profile-details input[type="tel"] {
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      font:bold;
     }
 
-    input[type="file"] {
-      width: 60%;
+    .profile-details textarea {
+      width: 100%;
       padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
     }
 
-    button {
+    .profile-details button {
       background-color: #1e2d4d;
-      color: #6CCEEF;
+      color: white;
       padding: 10px 20px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
     }
 
-    button:hover {
+    .profile-details button:hover {
       background-color: #143147;
     }
-    .Registration{
-        color: #6CCEEF;
-    }
-    #picture{
-      color: #6CCEEF;
-    }
+    .information{
+      color: #22d3ee;
 
+    }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h2 class="Registration">Registration Form</h2>
-    <form>
-      <label for="fullname">Full Name:</label>
-      <input type="text" id="fullname" name="fullname" required>
+  <div class="profile-container">
+    <div class="profile-details">
+      <h1>Edit Profile</h1>
+      <form class="information">
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" value="John Doe">
 
-      <label for="nickname">Nickname:</label>
-      <input type="text" id="nickname" name="nickname">
+        <label for="nickname">Nickname:</label>
+        <input type="text" id="nickname" name="nickname" value="johndoe123">
 
-      <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" name="dob" required>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" value="1990-05-15">
 
-      <label for="religion">Religion:</label>
-      <input type="text" id="religion" name="religion">
+        <label for="religion">Religion:</label>
+        <input type="text" id="religion" name="religion" value="Christian">
 
-      <label for="school">School:</label>
-      <input type="text" id="school" name="school">
+        <label for="school">School:</label>
+        <input type="text" id="school" name="school" value="ABC High School">
 
-      <label for="college">College:</label>
-      <input type="text" id="college" name="college">
+        <label for="college">College:</label>
+        <input type="text" id="college" name="college" value="XYZ College">
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="johndoe@example.com">
 
-      <label for="contact">Contact:</label>
-      <input type="tel" id="contact" name="contact">
+        <label for="contact">Contact:</label>
+        <input type="tel" id="contact" name="contact" value="+1 (123) 456-7890">
 
-      <label for="address">Address:</label>
-      <input type="text" id="address" name="address">
+        <label for="praddress">Present Address:</label>
+        <input type="text" id="praddress" name="praddress" value="123 Main Street, City">
 
-      <label for="upazila">Upazila:</label>
-      <input type="text" id="upazila" name="upazila">
+        <label for="reraddress">Permanent Address:</label>
+        <input type="text" id="reraddress" name="reraddress" value="456 Park Avenue, Town">
 
-      <label for="district">District:</label>
-      <input type="text" id="district" name="district">
+        <label for="upazila">Upazila:</label>
+        <input type="text" id="upazila" name="upazila" value="Upazila Name">
 
-      <label for="picture">Picture:</label>
-      <input type="file" id="picture" name="picture">
+        <label for="district">District:</label>
+        <input type="text" id="district" name="district" value="District Name">
 
-      <button type="submit">Submit</button>
-    </form>
+        <label for="facebook">Facebook:</label>
+        <input type="text" id="facebook" name="facebook" value="https://www.facebook.com/yourprofile">
+
+        <label for="experience">Experience:</label>
+        <textarea id="experience" name="experience" rows="4">Past work experience and accomplishments...</textarea>
+
+        <label for="skills">Skills:</label>
+        <textarea id="skills" name="skills" rows="4">Your skills and competencies...</textarea>
+
+        <label for="interests">Interests:</label>
+        <textarea id="interests" name="interests" rows="4">Your hobbies and interests...</textarea>
+
+        
+      </form>
+    </div>
+    <div class="profile-image">
+      <img src="images/images.jpg" alt="Profile Picture">
+      
+      <div class="social-links">
+
+        <a class="social-link" href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i>
+        <a class="social-link" href="https://www.google.com/search?gs_ssp=eJzj4tLP1TfIyDMsS05XYDRgdGDwYi8pzywpSS0CAFnOB00&q=twitter&rlz=1C1CHBF_enBD1040BD1040&oq=tw&gs_lcrp=EgZjaHJvbWUqFQgBEC4YQxiDARjHARixAxjRAxiKBTIGCAAQRRg5MhUIARAuGEMYgwEYxwEYsQMY0QMYigUyDwgCEAAYQxiDARixAxiKBTIPCAMQABhDGIMBGLEDGIoFMgYIBBBFGD0yBggFEEUYPDIGCAYQRRg9MgQIBxAF0gEIMzE0NGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8"><i class="fa-brands fa-twitter"></i>
+        <a class="social-link" href="https://www.google.com/search?q=instagram&rlz=1C1CHBF_enBD1040BD1040&oq=inst&gs_lcrp=EgZjaHJvbWUqDwgAEAAYQxiDARixAxiKBTIPCAAQABhDGIMBGLEDGIoFMg8IARAAGEMYgwEYsQMYigUyBggCEEUYOTINCAMQABiDARixAxiABDIGCAQQRRg8MgYIBRBFGDwyBAgGEAUyBggHEEUYPNIBCDM4NTJqMGo0qAIAsAIA&sourceid=chrome&ie=UTF-8"><i class="fa-brands fa-instagram"></i>
+      </div>
+    </div>
   </div>
 </body>
 
