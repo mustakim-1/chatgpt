@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <style>
+
+    title{
+        color:#6CCEEF;
+    }
+
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: darkcyan;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color:#0F1729;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: grid;
+      grid-gap: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #6CCEEF;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="file"] {
+      width: 60%;
+      padding: 10px;
+    }
+
+    button {
+      background-color: #1e2d4d;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #143147;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Registration Form</h2>
+    <form>
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="fullname" required>
+
+      <label for="nickname">Nickname:</label>
+      <input type="text" id="nickname" name="nickname">
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <label for="religion">Religion:</label>
+      <input type="text" id="religion" name="religion">
+
+      <label for="school">School:</label>
+      <input type="text" id="school" name="school">
+
+      <label for="college">College:</label>
+      <input type="text" id="college" name="college">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="contact">Contact:</label>
+      <input type="tel" id="contact" name="contact">
+
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address">
+
+      <label for="upazila">Upazila:</label>
+      <input type="text" id="upazila" name="upazila">
+
+      <label for="district">District:</label>
+      <input type="text" id="district" name="district">
+
+      <label for="picture">Picture:</label>
+      <input type="file" id="picture" name="picture">
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+
+</html>
