@@ -1,199 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Task Manager</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
 
-<head >
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile Page</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-     
-     
+        .task-manager-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+        }
 
-    }
+        .task-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
 
-    .profile-container {
-      display: flex;
-      width: 100%;
-      /* max-width: 800px; */
-      background-color: #1e2d4d;
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      color: #22d3ee;
+        .task-inputs input,
+        .task-inputs select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
-    }
+        .task-inputs button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-    .profile-image {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: #1e2d4d;
-      color: #22d3ee;
+        .task-inputs button:hover {
+            background-color: #45a049;
+        }
 
-    }
+        .filters-container {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    .profile-image img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 50%;
-      margin-bottom: 10px;
-      color: #22d3ee;
+        .filters-container input,
+        .filters-container select {
+            width: calc(33% - 10px);
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
-    }
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
 
-    .social-links {
-      display: flex;
-      gap: 30px;
-      margin-top: 30px;
-    }
+        .task {
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    .social-link {
-      margin-right: 10px;
-      font-size: 20px;
-      color: #ffffff;
-      text-decoration: none;
-      color: #22d3ee;
+        .task-text {
+            flex: 1;
+        }
 
-    }
+        .task-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .profile-details {
-      flex: 2;
-      padding: 20px;
-      color: #22d3ee;
-    }
+        .task-info span {
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
 
-    .profile-details h1 {
-      margin-top: 0;
-      font-size: 24px;
-      
-      color: #22d3ee;
+        .task-info button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-    }
+        .task-info button:hover {
+            background-color: #d32f2f;
+        }
 
-    .profile-details label {
-      font-weight: bold;
-      color: #1e2d4d;
-      display: block;
-      margin-top: 10px;
-      color: #22d3ee;
+        .completed-tasks {
+            margin-top: 20px;
+        }
 
-    }
+        .completed-tasks-header {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
 
-    .profile-details input[type="text"],
-    .profile-details input[type="email"],
-    .profile-details input[type="tel"] {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font:bold;
-    }
+        .dare {
+            color: red;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
 
-    .profile-details textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      resize: vertical;
-    }
+        .dark-mode-toggle {
+            margin-top: 20px;
+            text-align: center;
+        }
 
-    .profile-details button {
-      background-color: #1e2d4d;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+        .dark-mode-toggle button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
 
-    .profile-details button:hover {
-      background-color: #143147;
-    }
-    .information{
-      color: #22d3ee;
-
-    }
-  </style>
+        .dark-mode-toggle button:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="profile-container">
-    <div class="profile-details">
-      <h1>Edit Profile</h1>
-      <form class="information">
-        <label for="fullname">Full Name:</label>
-        <input type="text" id="fullname" name="fullname" value="John Doe">
+    <div class="task-manager-container">
+        <div class="task-inputs">
+            <input type="text" id="taskInput" placeholder="Enter a new task">
+            <input type="datetime-local" id="deadlineInput">
+            <input type="text" id="categoryInput" placeholder="Enter category">
+            <select id="priorityInput">
+                <option value="">Set Priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <button id="addTaskButton">Add Task</button>
+        </div>
 
-        <label for="nickname">Nickname:</label>
-        <input type="text" id="nickname" name="nickname" value="johndoe123">
+        <div class="filters-container">
+            <input type="text" id="searchInput" placeholder="Search tasks">
+            <input type="text" id="filterCategory" placeholder="Filter by category">
+            <select id="filterPriority">
+                <option value="">Filter by priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
 
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" value="1990-05-15">
+        <ul id="taskList" class="task-list"></ul>
 
-        <label for="religion">Religion:</label>
-        <input type="text" id="religion" name="religion" value="Christian">
+        <div id="dareContainer" class="dare"></div>
 
-        <label for="school">School:</label>
-        <input type="text" id="school" name="school" value="ABC High School">
+        <div class="completed-tasks">
+            <div class="completed-tasks-header">Completed Tasks</div>
+            <ul id="completedTaskList" class="task-list"></ul>
+        </div>
 
-        <label for="college">College:</label>
-        <input type="text" id="college" name="college" value="XYZ College">
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="johndoe@example.com">
-
-        <label for="contact">Contact:</label>
-        <input type="tel" id="contact" name="contact" value="+1 (123) 456-7890">
-
-        <label for="praddress">Present Address:</label>
-        <input type="text" id="praddress" name="praddress" value="123 Main Street, City">
-
-        <label for="reraddress">Permanent Address:</label>
-        <input type="text" id="reraddress" name="reraddress" value="456 Park Avenue, Town">
-
-        <label for="upazila">Upazila:</label>
-        <input type="text" id="upazila" name="upazila" value="Upazila Name">
-
-        <label for="district">District:</label>
-        <input type="text" id="district" name="district" value="District Name">
-
-        <label for="facebook">Facebook:</label>
-        <input type="text" id="facebook" name="facebook" value="https://www.facebook.com/yourprofile">
-
-        <label for="experience">Experience:</label>
-        <textarea id="experience" name="experience" rows="4">Past work experience and accomplishments...</textarea>
-
-        <label for="skills">Skills:</label>
-        <textarea id="skills" name="skills" rows="4">Your skills and competencies...</textarea>
-
-        <label for="interests">Interests:</label>
-        <textarea id="interests" name="interests" rows="4">Your hobbies and interests...</textarea>
-
-        
-      </form>
+        <div class="dark-mode-toggle">
+            <button id="modeToggle">Toggle Dark Mode</button>
+        </div>
     </div>
-    <div class="profile-image">
-      <img src="images/images.jpg" alt="Profile Picture">
-      
-      <div class="social-links">
 
-        <a class="social-link" href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i>
-        <a class="social-link" href="https://www.google.com/search?gs_ssp=eJzj4tLP1TfIyDMsS05XYDRgdGDwYi8pzywpSS0CAFnOB00&q=twitter&rlz=1C1CHBF_enBD1040BD1040&oq=tw&gs_lcrp=EgZjaHJvbWUqFQgBEC4YQxiDARjHARixAxjRAxiKBTIGCAAQRRg5MhUIARAuGEMYgwEYxwEYsQMY0QMYigUyDwgCEAAYQxiDARixAxiKBTIPCAMQABhDGIMBGLEDGIoFMgYIBBBFGD0yBggFEEUYPDIGCAYQRRg9MgQIBxAF0gEIMzE0NGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8"><i class="fa-brands fa-twitter"></i>
-        <a class="social-link" href="https://www.google.com/search?q=instagram&rlz=1C1CHBF_enBD1040BD1040&oq=inst&gs_lcrp=EgZjaHJvbWUqDwgAEAAYQxiDARixAxiKBTIPCAAQABhDGIMBGLEDGIoFMg8IARAAGEMYgwEYsQMYigUyBggCEEUYOTINCAMQABiDARixAxiABDIGCAQQRRg8MgYIBRBFGDwyBAgGEAUyBggHEEUYPNIBCDM4NTJqMGo0qAIAsAIA&sourceid=chrome&ie=UTF-8"><i class="fa-brands fa-instagram"></i>
-      </div>
-    </div>
-  </div>
+    <script>
+        const taskInput = document.getElementById('taskInput');
+        const deadlineInput = document.getElementById('deadlineInput');
+        const categoryInput = document.getElementById('categoryInput');
+        const priorityInput = document.getElementById('priorityInput');
+        const addTaskButton = document.getElementById('addTaskButton');
+        const taskList = document.getElementById('taskList');
+        const completedTaskList = document.getElementById('completedTaskList');
+        const dareContainer = document.getElementById('dareContainer');
+        const searchInput = document.getElementById('searchInput');
+        const filterCategory = document.getElementById('filterCategory');
+        const filterPriority = document.getElementById('filterPriority');
+        const modeToggle = document.getElementById('modeToggle');
+        const dares = [
+            'Do 10 push-ups!',
+            'do 5 minute plank',
+            'do 10 sit-up',
+            'read 1 page of any book',
+            'wash your face with only water'
+        ];
+
+        let darkMode = false;
+
+        addTaskButton.addEventListener('click', addTask);
+        taskInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                addTask();
+            }
+        });
+        searchInput.addEventListener('input', filterTasks);
+        filterCategory.addEventListener('input', filterTasks);
+        filterPriority.addEventListener('change', filterTasks);
+        modeToggle.addEventListener('click', toggleMode);
+
+        function addTask() {
+            const taskText = taskInput.value.trim();
+            const deadline = new Date(deadlineInput.value);
+            const category = categoryInput.value.trim();
+            const priority = priorityInput.value;
+            if (taskText !== '' && !isNaN(deadline) && category !== '' && priority !== '') {
+                const taskId = Date.now().toString();
+                const li = createTaskElement(taskText, deadline, category, priority, taskId);
+                taskList.appendChild(li);
+                saveTask(taskText, deadline, category, priority, taskId);
+                taskInput.value = '';
+                deadlineInput.value = '';
+                categoryInput.value = '';
+                priorityInput.value = '';
+                updateBackground();
+                startDareTimer(li, taskId);
+            }
+        }
+
+        function createTaskElement(taskText, deadline, category, priority, taskId) {
+            const li = document.createElement('li');
+            li.className = 'task';
+            li.setAttribute('data-task-id', taskId);
+            li.innerHTML = `
+                <div class="task-info">
+                    <input type="checkbox" onclick="completeTask(this)">
+                    <span class="task-text">${taskText}</span>
+                    <span class="category">${category}</span>
+                    <span class="priority">${priority}</span>
+                    <span class="timer" id="timer-${taskId}"></span>
+                    <button onclick="removeTask(this)">Remove</button>
+                    <button class="edit-task" onclick="editTask(this)">Edit</button>
+                </div>
+            `;
+            li.querySelector('.task-text').title = `Deadline: ${deadline}`;
+            return li;
+        }
+
+        function removeTask(button) {
+            const taskId = button.parentElement.parentElement.getAttribute('data-task-id');
+            button.parentElement.parentElement.remove();
+            removeTaskFromStorage(taskId);
+            updateBackground();
+        }
+
+        function completeTask(checkbox) {
+            const taskElement = checkbox.parentElement.parentElement;
+            const taskId = taskElement.getAttribute('data-task-id');
+            const taskText = taskElement.querySelector('.task-text').textContent;
+
+            if (checkbox.checked) {
+                completedTaskList.appendChild(taskElement);
+                taskElement.querySelector('.edit-task').remove();
+                taskElement.querySelector('.timer').remove();
+                removeTaskFromStorage(taskId);
+                saveCompletedTask(taskText, taskId);
+            } else {
+                taskList.appendChild(taskElement);
+                updateBackground();
+            }
+        }
+
+        function editTask(button) {
+            const taskElement = button.parentElement.parentElement;
+            const taskId = taskElement.getAttribute('data-task-id');
+            const taskText = taskElement.querySelector('.task-text').textContent;
+            const deadline = new Date(taskElement.querySelector('.task-text').title.replace('Deadline: ', ''));
+            const category = taskElement.querySelector('.category').textContent;
+            const priority = taskElement.querySelector('.priority').textContent;
+
+            taskInput.value = taskText;
+            deadlineInput.value = deadline.toISOString().slice(0, 16);
+            categoryInput.value = category;
+            priorityInput.value = priority;
+            removeTask(button);
+        }
+
+        function updateBackground() {
+            const taskCount = taskList.children.length;
+            if (taskCount === 0) {
+                document.body.className = darkMode ? 'no-tasks dark-mode' : 'no-tasks light-mode';
+                dareContainer.textContent = '';
+            } else if (taskCount < 5) {
+                document.body.className = darkMode ? 'few-tasks dark-mode' : 'few-tasks light-mode';
+            } else {
+                document.body.className = darkMode ? 'many-tasks dark-mode' : 'many-tasks light-mode';
+            }
+        }
+
+        function startDareTimer(taskElement, taskId) {
+            const deadline = new Date(taskElement.querySelector('.task-text').title.replace('Deadline: ', ''));
+            const timerElement = document.getElementById(`timer-${taskId}`);
+
+            const interval = setInterval(() => {
+                const now = new Date();
+                const timeRemaining = Math.floor((deadline - now) / 1000);
+
+                if (timeRemaining <= 0) {
+                    clearInterval(interval);
+                    const dareIndex = Math.floor(Math.random() * dares.length);
+                    dareContainer.textContent = `Task "${taskElement.querySelector('.task-text').textContent}" missed the deadline! Dare: ${dares[dareIndex]}`;
+                } else {
+                    const minutes = Math.floor(timeRemaining / 60);
+                    const seconds = timeRemaining % 60;
+                    timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                }
+            }, 1000);
+        }
+
+        function saveTask(taskText, deadline, category, priority, taskId) {
+            const task = { taskText, deadline, category, priority };
+            localStorage.setItem(taskId, JSON.stringify(task));
+        }
+
+        function removeTaskFromStorage(taskId) {
+            localStorage.removeItem(taskId);
+        }
+
+        function saveCompletedTask(taskText, taskId) {
+            const completedTask = { taskText };
+            localStorage.setItem(`completed-${taskId}`, JSON.stringify(completedTask));
+        }
+
+        function loadTasks() {
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('completed-')) {
+                    const completedTask = JSON.parse(localStorage.getItem(key));
+                    const taskId = key.replace('completed-', '');
+                    const li = createCompletedTaskElement(completedTask.taskText, taskId);
+                    completedTaskList.appendChild(li);
+                } else if (!isNaN(parseInt(key))) {
+                    const task = JSON.parse(localStorage.getItem(key));
+                    const taskId = key;
+                    const li = createTaskElement(task.taskText, new Date(task.deadline), task.category, task.priority, taskId);
+                    taskList.appendChild(li);
+                    startDareTimer(li, taskId);
+                }
+            }
+            updateBackground();
+        }
+
+        function createCompletedTaskElement(taskText, taskId) {
+            const li = document.createElement('li');
+            li.className = 'task';
+            li.setAttribute('data-task-id', taskId);
+            li.innerHTML = `
+                <div class="task-info">
+                    <input type="checkbox" onclick="completeTask(this)" checked>
+                    <span class="task-text">${taskText}</span>
+                    <button onclick="removeTask(this)">Remove</button>
+                </div>
+            `;
+            return li;
+        }
+
+        function filterTasks() {
+            const searchText = searchInput.value.toLowerCase();
+            const categoryFilter = filterCategory.value.toLowerCase();
+            const priorityFilter = filterPriority.value.toLowerCase();
+
+            Array.from(taskList.children).forEach(task => {
+                const taskText = task.querySelector('.task-text').textContent.toLowerCase();
+                const category = task.querySelector('.category').textContent.toLowerCase();
+                const priority = task.querySelector('.priority').textContent.toLowerCase();
+
+                const matchesSearch = taskText.includes(searchText);
+                const matchesCategory = category.includes(categoryFilter) || categoryFilter === '';
+                const matchesPriority = priority.includes(priorityFilter) || priorityFilter === '';
+
+                if (matchesSearch && matchesCategory && matchesPriority) {
+                    task.style.display = 'flex';
+                } else {
+                    task.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleMode() {
+            darkMode = !darkMode;
+            document.body.className = darkMode ? 'dark-mode' : '';
+        }
+
+        window.onload = loadTasks;
+    </script>
 </body>
-
 </html>
+
