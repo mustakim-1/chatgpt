@@ -12,38 +12,39 @@
             align-items: center;
             height: 100vh;
             background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
         }
 
         .task-manager-container {
             background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
             width: 90%;
-            max-width: 600px;
+            max-width: 650px;
+            text-align: center;
         }
 
         .task-inputs {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 10px;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
         .task-inputs input,
         .task-inputs select {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             font-size: 1rem;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
 
         .task-inputs button {
-            width: 100%;
-            padding: 10px;
-            font-size: 1rem;
+            grid-column: span 2;
+            padding: 12px;
+            font-size: 1.1rem;
             background-color: #4CAF50;
             color: white;
             border: none;
@@ -61,12 +62,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 15px;
         }
 
         .filters-container input,
         .filters-container select {
-            width: calc(33% - 10px);
-            padding: 10px;
+            width: 100%;
+            padding: 12px;
             font-size: 1rem;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -75,21 +77,25 @@
         .task-list {
             list-style: none;
             padding: 0;
-            margin: 20px 0;
+            margin: 30px 0;
         }
 
         .task {
             background-color: #f9f9f9;
-            border-radius: 4px;
-            padding: 10px;
+            border-radius: 8px;
+            padding: 15px;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .task-text {
             flex: 1;
+            margin: 0 15px;
+            font-size: 1rem;
+            color: #333;
         }
 
         .task-info {
@@ -118,12 +124,13 @@
         }
 
         .completed-tasks {
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .completed-tasks-header {
             font-size: 1.2rem;
             margin-bottom: 10px;
+            color: #333;
         }
 
         .dare {
@@ -152,10 +159,33 @@
         .dark-mode-toggle button:hover {
             background-color: #555;
         }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .dark-mode .task-manager-container {
+            background-color: #333333;
+        }
+
+        .dark-mode .task {
+            background-color: #444444;
+        }
+
+        .dark-mode .task-info button {
+            background-color: #d32f2f;
+        }
+
+        .dark-mode .task-info button:hover {
+            background-color: #b71c1c;
+        }
     </style>
 </head>
 <body>
     <div class="task-manager-container">
+        <h1>Advanced Task Manager</h1>
+        <p>Stay organized and on top of your tasks!</p>
         <div class="task-inputs">
             <input type="text" id="taskInput" placeholder="Enter a new task">
             <input type="datetime-local" id="deadlineInput">
@@ -188,7 +218,7 @@
             <div class="completed-tasks-header">Completed Tasks</div>
             <ul id="completedTaskList" class="task-list"></ul>
         </div>
-
+        
         <div class="dark-mode-toggle">
             <button id="modeToggle">Toggle Dark Mode</button>
         </div>
@@ -209,10 +239,10 @@
         const modeToggle = document.getElementById('modeToggle');
         const dares = [
             'Do 10 push-ups!',
-            'do 5 minute plank',
-            'do 10 sit-up',
-            'read 1 page of any book',
-            'wash your face with only water'
+            'Do a 5-minute plank!',
+            'Do 10 sit-ups!',
+            'Read 1 page of any book!',
+            'Wash your face with only water!'
         ];
 
         let darkMode = false;
@@ -415,4 +445,3 @@
     </script>
 </body>
 </html>
-
