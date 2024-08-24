@@ -3,76 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Responsive Design</title>
     <style>
-        
-.card {
-  width: 190px;
-  height: 254px;
-  background: rgb(103, 225, 255);
-  transition: all 0.4s;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
-  font-size: 30px;
-  font-weight: 900;
-}
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            max-width: 100%; /* Full width on smaller screens */
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-.card:hover {
-  border-radius: 15px;
-  cursor: pointer;
-  transform: scale(1.2);
-  box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
-  background: rgb(103, 151, 255);
-}
+        .card {
+            flex: 1 1 100%; /* Full width by default */
+            max-width: 100%; /* Ensure cards take full width on small screens */
+            height: 320px;
+            background: rgb(103, 225, 255);
+            transition: all 0.4s;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.705);
+            font-size: 30px;
+            font-weight: 900;
+            position: relative;
+            overflow: hidden;
+        }
 
-.first-content {
-  height: 100%;
-  width: 100%;
-  transition: all 0.4s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 1;
-  border-radius: 15px;
-}
+        .card:hover {
+            border-radius: 15px;
+            cursor: pointer;
+            transform: scale(1.05); /* Slightly reduced scale for better mobile experience */
+            box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.7);
+            background: rgb(103, 151, 255);
+        }
 
-.card:hover .first-content {
-  height: 0px;
-  opacity: 0;
-}
+        .first-content {
+            height: 100%;
+            width: 100%;
+            transition: all 0.4s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            border-radius: 15px;
+        }
 
-.second-content {
-  height: 0%;
-  width: 100%;
-  opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-  transition: all 0.4s;
-  font-size: 0px;
-  transform: rotate(90deg) scale(-1);
-}
+        .card:hover .first-content {
+            height: 0px;
+            opacity: 0;
+        }
 
-.card:hover .second-content {
-  opacity: 1;
-  height: 100%;
-  font-size: 1.8rem;
-  transform: rotate(0deg);
-}
+        .second-content {
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            transition: all 0.4s;
+            font-size: 0px;
+            transform: rotate(90deg) scale(-1);
+            overflow: hidden;
+        }
 
+        /* Updated image styling */
+        .second-content img {
+            width: 100%; /* Full width of the container */
+            height: auto; /* Height adjusts based on aspect ratio */
+            object-fit: cover; /* Maintain aspect ratio and cover the container */
+            border-radius: 15px;
+        }
+
+        .card:hover .second-content {
+            opacity: 1;
+            height: 100%;
+            font-size: 1.8rem;
+            transform: rotate(0deg);
+        }
+
+        /* Media query for tablets and larger screens */
+        @media (min-width: 768px) {
+            .card {
+                flex: 1 1 calc(50% - 30px); /* 2 cards per row on medium screens */
+                max-width: 280px;
+            }
+
+            .container {
+                max-width: 720px; /* Adjust the container's max-width */
+            }
+        }
+
+        /* Media query for desktops and larger screens */
+        @media (min-width: 1024px) {
+            .card {
+                flex: 1 1 calc(33.333% - 40px); /* 3 cards per row on larger screens */
+                max-width: 280px;
+                height: 370px;
+            }
+
+            .container {
+                max-width: 920px; /* Adjust the container's max-width to fit larger cards */
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="first-content">
-          <span>First</span>
+    <div class="container">
+        <div class="card">
+            <div class="first-content">
+                <span>Course 1 Description</span>
+            </div>
+            <div class="second-content">
+                <img src="/images/427963763_693829769495977_4057112643326069868_n.jpg" alt="Course 1">
+            </div>
         </div>
-        <div class="second-content">
-      <span>Second</span>
+        <div class="card">
+            <div class="first-content">
+                <span>Course 2 Description</span>
+            </div>
+            <div class="second-content">
+                <img src="/images/427963763_693829769495977_4057112643326069868_n.jpg" alt="Course 2">
+            </div>
         </div>
-      
-      
-      </div>
+        <div class="card">
+            <div class="first-content">
+                <span>Course 3 Description</span>
+            </div>
+            <div class="second-content">
+                <img src="/images/427963763_693829769495977_4057112643326069868_n.jpg" alt="Course 3">
+            </div>
+        </div>
+    <div class="container">
+        <div class="card">
+            <div class="first-content">
+                <span>Course 1 Description</span>
+            </div>
+            <div class="second-content">
+                <img src="/images/427963763_693829769495977_4057112643326069868_n.jpg" alt="Course 1">
+            </div>
+        </div>
+        <div class="card">
+            <div class="first-content">
+                <span>Course 2 Description</span>
+            </div>
+            <div class="second-content">
+                <img src="/images/427963763_693829769495977_4057112643326069868_n.jpg" alt="Course 2">
+            </div>
+        </div>
+        <div class="card">
+            <div class="first-content">
+                <span>Course 3 Description</span>
+            </div>
+            <div class="second-content">
+                <img src="/images/427963763_693829769495977_4057112643326069868_n.jpg" alt="Course 3">
+            </div>
+        </div>
+        <!-- Add more cards as needed -->
+    </div>
 </body>
 </html>

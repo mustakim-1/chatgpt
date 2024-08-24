@@ -1,53 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Effect</title>
+    <style>
+
+        .typing {
+            font-family: monospace;
+            font-size: 24px;
+            white-space: nowrap;
+            overflow: hidden;
+            background: linear-gradient(to right top, #053733, #00485a, #005693, #005ecc, #1251eb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            border-right: 2px solid #7E2EA0;
+            animation: typing 5s steps(15, end), cursor 0.7s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 15ch;
+            }
+        }
+
+        @keyframes cursor {
+            50% {
+                border-color: transparent;
+            }
+            100% {
+                border-color: #7E2EA0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="banner">
-        <div class="slider" style="--quantity: 10">
-            <div class="item" style="--position: 1">
-                <img src="/images/354215090_964800544662065_8408411907999045285_n.jpg" alt="" />
-            </div>
-            <div class="item" style="--position: 2">
-                <img src="/images/1708461865145.jpg" alt="" />
-            </div>
-            <div class="item" style="--position: 3">
-                <img src="/images/1708463236102.jpg" alt="" />
-            </div>
-            <div class="item" style="--position: 4">
-                <img src="/images/454206154_1020193702985423_670714246303559205_n.jpg" alt="" />
-            </div>
-            <div class="item" style="--position: 5">
-                <img src="/images/372819967_1643446402842620_1070357503032923282_n.jpg" alt="" />
-            </div>
-            <div class="item" style="--position: 6">
-                <img src="/images/353415171_675914351217304_875227664412496262_n.jpg" alt="" />
-            </div>
-            <div class="item" style="--position: 7">
-                <img src="/images/440326333_1611451736299691_5473443133642947721_n.jpg" alt="" />
-            </div>
-            <div class="item" style="--position: 8">
-                <img src="images/372819967_1643446402842620_1070357503032923282_n.jpg" alt="" />
-            </div>
-            <div class="item" style="--position: 9">
-                <img src="/images/445203073_1943239592798620_857333609241818173_n.jpg" alt="" />
-            </div>
-            <div class="item" style="--position: 10">
-                <img src="/images/427963763_693829769495977_4057112643326069868_n.jpg" alt="" />
-            </div>
-        </div>
-        <div class="content">
-            <h1 data-content="SULPHUR"></h1>
-            <div class="author">
-                <p><b>web design</b></p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure voluptatem min</p>
-            </div>
-            <div class="model"></div>
-        </div>
-    </div>
+    <div class="typing">our instructors</div>
 </body>
 </html>
